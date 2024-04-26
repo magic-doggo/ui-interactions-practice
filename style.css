@@ -13,18 +13,20 @@ nav {
     width: 1280px;
     display: inline-flex;
     overflow-x: hidden;
-    object-fit: contain; 
-    /* does object-fit work? */
+    object-fit: contain; /* not needed*/
 }
-
-/* img {
-    object-fit: contain;
-} */
-
-/* .img-container > img:nth-child(1) {
-    display: none;
-} */
 
 .img-container > img {
     display: none;
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.img-container > img:nth-child(1) {
+    display: inline;
 }
