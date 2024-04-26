@@ -7,3 +7,24 @@ nav {
 .hidden {
     display: none;
 }
+
+.img-container {
+    height: 721px;
+    width: 1280px;
+    display: inline-flex;
+    overflow-x: hidden;
+    object-fit: contain; 
+    /* does object-fit work? */
+}
+
+/* img {
+    object-fit: contain;
+} */
+
+/* .img-container > img:nth-child(1) {
+    display: none;
+} */
+
+.img-container > img {
+    display: none;
+}
