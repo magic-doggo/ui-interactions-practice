@@ -1,3 +1,4 @@
+let timeoutId;
 const dropdownParent = document.querySelectorAll(".dropdown-parent");
 
 dropdownParent.forEach(dropdown => {
@@ -27,6 +28,7 @@ function displayImage(currentIndex) {
 const rightIcon = document.getElementById("arrow-right")
 rightIcon.addEventListener("click", showRightImage)
 function showRightImage(){
+    clearTimeout(timeoutId);
     let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
     imageWeMoveAwayFrom.style.display = "none";
     currentIndex += 1;
@@ -34,12 +36,14 @@ function showRightImage(){
         currentIndex = 1;
     }
     displayImage(currentIndex);
+    delayTimer();
     return currentIndex;
 }
 
 const leftIcon = document.getElementById("arrow-left")
 leftIcon.addEventListener("click", showLeftImage)
 function showLeftImage(){
+    clearTimeout(timeoutId);
     let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
     imageWeMoveAwayFrom.style.display = "none";
     currentIndex -= 1;
@@ -47,16 +51,24 @@ function showLeftImage(){
         currentIndex = 4;
     }
     displayImage(currentIndex);
+    delayTimer();
     return currentIndex;
 }
 
 const indexIcons = document.querySelectorAll(".index-icon")
 indexIcons.forEach((icon, forEachIndex) => {
     icon.addEventListener("click", () =>{
+        clearTimeout(timeoutId);
         let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
         imageWeMoveAwayFrom.style.display = "none";
         currentIndex = forEachIndex + 1;
         displayImage(currentIndex);
+        delayTimer();
         return currentIndex;
     })
 })
+
+function delayTimer(){
+    timeoutId = setTimeout(showRightImage, 5000);
+}
+delayTimer();
