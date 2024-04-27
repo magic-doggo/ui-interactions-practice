@@ -16,17 +16,13 @@ dropdownParent.forEach(dropdown => {
     });
 
 })
-//////
 
-// each image has an index. there is a currentIndex that changes depending according to arrows/buttons
 let currentIndex = 1
-
 function displayImage(currentIndex) {
     const currentImage = document.querySelector(`.img-container>img:nth-child(${currentIndex})`);
     currentImage.style.display = "inline";
     return currentIndex;
 }
-
 
 const rightIcon = document.getElementById("arrow-right")
 rightIcon.addEventListener("click", showRightImage)
@@ -53,3 +49,14 @@ function showLeftImage(){
     displayImage(currentIndex);
     return currentIndex;
 }
+
+const indexIcons = document.querySelectorAll(".index-icon")
+indexIcons.forEach((icon, forEachIndex) => {
+    icon.addEventListener("click", () =>{
+        let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
+        imageWeMoveAwayFrom.style.display = "none";
+        currentIndex = forEachIndex + 1;
+        displayImage(currentIndex);
+        return currentIndex;
+    })
+})
