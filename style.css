@@ -11,17 +11,19 @@ nav {
 .img-container {
     position: relative;
     height: 821px;
-    /* width: 2280px; */
+    /* width: 1280px; */
     width: auto;
     display: inline-flex;
     overflow-x: hidden;
     object-fit: contain; /* not needed*/
+    /* flex-shrink: 1; */
 }
 
 .img-container > img {
     display: none;
     animation-name: fade;
     animation-duration: 1.5s;
+    flex-shrink: 1;
 }
 
 @keyframes fade {
@@ -33,7 +35,7 @@ nav {
     display: inline;
 }
 
-.index-icons {
+#index-icons {
     display: flex;
     gap: 34px;
     position: absolute;
@@ -41,28 +43,23 @@ nav {
     left: 200px;
     font-weight: 900;
     font-size: 32px;
-    color:rgb(77, 23, 23);
+    /* color:rgb(77, 23, 23); */
+    color: white;
     text-decoration: underline;
 }
 
-.arrow-left {
+#arrow-left,
+#arrow-right {
     position: absolute;
     top: 350px;
-    /* left: 20px; */
-    left: 4%;
+    left: 30px;
     font-weight: 900;
     font-size: 32px;
-    color:rgb(77, 23, 23);
+    color: white;
 }
 
-.arrow-right {
-    position: absolute;
-    top: 350px;
-    /* right: 0; */
-    left: 90%;
-    font-weight: 900;
-    font-size: 32px;
-    color:rgb(77, 23, 23);
+#arrow-right {
+    top: 400px;
 }
 
 .useless {

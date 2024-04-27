@@ -27,22 +27,29 @@ function displayImage(currentIndex) {
     return currentIndex;
 }
 
-const test = document.createElement("div");
-test.innerHTML = "test";
-let container = document.getElementById("test-container")
-container.appendChild(test)
 
-test.addEventListener("click", shownNextImage)
-function shownNextImage(){
-    let previousImage = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
-    previousImage.style.display = "none";
+const rightIcon = document.getElementById("arrow-right")
+rightIcon.addEventListener("click", showRightImage)
+function showRightImage(){
+    let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
+    imageWeMoveAwayFrom.style.display = "none";
     currentIndex += 1;
     if (currentIndex > 4) {
         currentIndex = 1;
     }
-    else if (currentIndex < 1) {
+    displayImage(currentIndex);
+    return currentIndex;
+}
+
+const leftIcon = document.getElementById("arrow-left")
+leftIcon.addEventListener("click", showLeftImage)
+function showLeftImage(){
+    let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
+    imageWeMoveAwayFrom.style.display = "none";
+    currentIndex -= 1;
+    if (currentIndex < 1) {
         currentIndex = 4;
     }
-    displayImage(currentIndex)
-    return currentIndex
+    displayImage(currentIndex);
+    return currentIndex;
 }
