@@ -20,7 +20,6 @@ dropdownParent.forEach(dropdown => {
 
 // each image has an index. there is a currentIndex that changes depending according to arrows/buttons
 let currentIndex = 1
-// const child = document.querySelector(`.img-container:nth-child(${currentIndex})`);
 
 function displayImage(currentIndex) {
     const currentImage = document.querySelector(`.img-container>img:nth-child(${currentIndex})`);
@@ -38,15 +37,12 @@ function shownNextImage(){
     let previousImage = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
     previousImage.style.display = "none";
     currentIndex += 1;
-    console.log(currentIndex)
     if (currentIndex > 4) {
         currentIndex = 1;
     }
     else if (currentIndex < 1) {
         currentIndex = 4;
     }
-    console.log(currentIndex)
-
     displayImage(currentIndex)
     return currentIndex
 }

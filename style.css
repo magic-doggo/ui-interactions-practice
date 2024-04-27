@@ -9,8 +9,10 @@ nav {
 }
 
 .img-container {
-    height: 721px;
-    width: 1280px;
+    position: relative;
+    height: 821px;
+    /* width: 2280px; */
+    width: auto;
     display: inline-flex;
     overflow-x: hidden;
     object-fit: contain; /* not needed*/
@@ -29,4 +31,40 @@ nav {
 
 .img-container > img:nth-child(1) {
     display: inline;
+}
+
+.index-icons {
+    display: flex;
+    gap: 34px;
+    position: absolute;
+    top: 750px;
+    left: 200px;
+    font-weight: 900;
+    font-size: 32px;
+    color:rgb(77, 23, 23);
+    text-decoration: underline;
+}
+
+.arrow-left {
+    position: absolute;
+    top: 350px;
+    /* left: 20px; */
+    left: 4%;
+    font-weight: 900;
+    font-size: 32px;
+    color:rgb(77, 23, 23);
+}
+
+.arrow-right {
+    position: absolute;
+    top: 350px;
+    /* right: 0; */
+    left: 90%;
+    font-weight: 900;
+    font-size: 32px;
+    color:rgb(77, 23, 23);
+}
+
+.useless {
+    width: auto;
 }
