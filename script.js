@@ -1,74 +1,82 @@
 let timeoutId;
-const dropdownParent = document.querySelectorAll(".dropdown-parent");
+const dropdownParent = document.querySelectorAll('.dropdown-parent');
 
-dropdownParent.forEach(dropdown => {
-    dropdown.addEventListener("mouseenter", () => {
-        for (let child in dropdown.children) {
-             if (dropdown.children[child] instanceof HTMLDivElement) {
-                dropdown.children[child].classList.remove("hidden")
-        }}
-    });
-    dropdown.addEventListener("mouseleave", () => {
-        for (let child in dropdown.children) {
-            if (dropdown.children[child] instanceof HTMLDivElement) {
-                dropdown.children[child].classList.add("hidden")
-            }
-        }
-    });
-
-})
-
-let currentIndex = 1
-function displayImage(currentIndex) {
-    const currentImage = document.querySelector(`.img-container>img:nth-child(${currentIndex})`);
-    currentImage.style.display = "inline";
-    return currentIndex;
-}
-
-const rightIcon = document.getElementById("arrow-right")
-rightIcon.addEventListener("click", showRightImage)
-function showRightImage(){
-    clearTimeout(timeoutId);
-    let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
-    imageWeMoveAwayFrom.style.display = "none";
-    currentIndex += 1;
-    if (currentIndex > 4) {
-        currentIndex = 1;
+dropdownParent.forEach((dropdown) => {
+  dropdown.addEventListener('mouseenter', () => {
+    for (const child in dropdown.children) {
+      if (dropdown.children[child] instanceof HTMLDivElement) {
+        dropdown.children[child].classList.remove('hidden');
+      }
     }
-    displayImage(currentIndex);
-    delayTimer();
-    return currentIndex;
-}
-
-const leftIcon = document.getElementById("arrow-left")
-leftIcon.addEventListener("click", showLeftImage)
-function showLeftImage(){
-    clearTimeout(timeoutId);
-    let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
-    imageWeMoveAwayFrom.style.display = "none";
-    currentIndex -= 1;
-    if (currentIndex < 1) {
-        currentIndex = 4;
+  });
+  dropdown.addEventListener('mouseleave', () => {
+    for (const child in dropdown.children) {
+      if (dropdown.children[child] instanceof HTMLDivElement) {
+        dropdown.children[child].classList.add('hidden');
+      }
     }
-    displayImage(currentIndex);
-    delayTimer();
-    return currentIndex;
+  });
+});
+
+let currentIndex = 1;
+function displayImage(index) {
+  const currentImage = document.querySelector(
+    `.img-container>img:nth-child(${index})`,
+  );
+  currentImage.style.display = 'inline';
+  return currentIndex;
 }
 
-const indexIcons = document.querySelectorAll(".index-icon")
-indexIcons.forEach((icon, forEachIndex) => {
-    icon.addEventListener("click", () =>{
-        clearTimeout(timeoutId);
-        let imageWeMoveAwayFrom = document.querySelector(`.img-container>img:nth-child(${currentIndex})`)
-        imageWeMoveAwayFrom.style.display = "none";
-        currentIndex = forEachIndex + 1;
-        displayImage(currentIndex);
-        delayTimer();
-        return currentIndex;
-    })
-})
+const rightIcon = document.getElementById('arrow-right');
+function showRightImage() {
+  clearTimeout(timeoutId);
+  const imageWeMoveAwayFrom = document.querySelector(
+    `.img-container>img:nth-child(${currentIndex})`,
+  );
+  imageWeMoveAwayFrom.style.display = 'none';
+  currentIndex += 1;
+  if (currentIndex > 4) {
+    currentIndex = 1;
+  }
+  displayImage(currentIndex);
+  delayTimer();
+  return currentIndex;
+}
+rightIcon.addEventListener('click', showRightImage);
 
-function delayTimer(){
-    timeoutId = setTimeout(showRightImage, 5000);
+function delayTimer() {
+  timeoutId = setTimeout(showRightImage, 5000);
 }
 delayTimer();
+
+const leftIcon = document.getElementById('arrow-left');
+function showLeftImage() {
+  clearTimeout(timeoutId);
+  const imageWeMoveAwayFrom = document.querySelector(
+    `.img-container>img:nth-child(${currentIndex})`,
+  );
+  imageWeMoveAwayFrom.style.display = 'none';
+  currentIndex -= 1;
+  if (currentIndex < 1) {
+    currentIndex = 4;
+  }
+  displayImage(currentIndex);
+  delayTimer();
+  return currentIndex;
+}
+leftIcon.addEventListener('click', showLeftImage);
+
+const indexIcons = document.querySelectorAll('.index-icon');
+indexIcons.forEach((icon, forEachIndex) => {
+  icon.addEventListener('click', () => {
+    clearTimeout(timeoutId);
+    const imageWeMoveAwayFrom = document.querySelector(
+      `.img-container>img:nth-child(${currentIndex})`,
+    );
+    imageWeMoveAwayFrom.style.display = 'none';
+    currentIndex = forEachIndex + 1;
+    displayImage(currentIndex);
+    delayTimer();
+    return currentIndex;
+  });
+});
