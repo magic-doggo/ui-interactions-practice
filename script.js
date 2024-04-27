@@ -3,6 +3,7 @@ const dropdownParent = document.querySelectorAll('.dropdown-parent');
 
 dropdownParent.forEach((dropdown) => {
   dropdown.addEventListener('mouseenter', () => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const child in dropdown.children) {
       if (dropdown.children[child] instanceof HTMLDivElement) {
         dropdown.children[child].classList.remove('hidden');
@@ -10,6 +11,7 @@ dropdownParent.forEach((dropdown) => {
     }
   });
   dropdown.addEventListener('mouseleave', () => {
+    // eslint-disable-next-line no-restricted-syntax
     for (const child in dropdown.children) {
       if (dropdown.children[child] instanceof HTMLDivElement) {
         dropdown.children[child].classList.add('hidden');
@@ -39,13 +41,13 @@ function showRightImage() {
     currentIndex = 1;
   }
   displayImage(currentIndex);
-  delayTimer();
+  delayTimer(showRightImage);
   return currentIndex;
 }
 rightIcon.addEventListener('click', showRightImage);
 
-function delayTimer() {
-  timeoutId = setTimeout(showRightImage, 5000);
+function delayTimer(callback) {
+  timeoutId = setTimeout(callback, 5000);
 }
 delayTimer();
 
