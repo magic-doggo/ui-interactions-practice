@@ -2,15 +2,40 @@ nav {
     background-color: aliceblue;
     display: flex;
     justify-content: space-around;
+    padding-bottom: 60px;
+    font-size: larger;
+    font-weight: 900;
+    position: relative;
+
 }
 
 .hidden {
     display: none;
 }
 
+.home {
+    top: 20px;
+    left: 200px;
+}
+.away {
+    top: 20px;
+    left: 600px;
+}
+
+.dropdown-parent {
+    position: absolute;
+    z-index: 1;
+}
+
+.dropdown-parent > div {
+    font-weight: 200;
+}
+
 .img-container {
     position: relative;
     height: 821px;
+    display: flex;
+    overflow-x: hidden;
 }
 
 .img-container > img {
