@@ -49,7 +49,7 @@ rightIcon.addEventListener('click', showRightImage);
 function delayTimer(callback) {
   timeoutId = setTimeout(callback, 5000);
 }
-delayTimer();
+delayTimer(showRightImage);
 
 const leftIcon = document.getElementById('arrow-left');
 function showLeftImage() {
@@ -63,7 +63,7 @@ function showLeftImage() {
     currentIndex = 4;
   }
   displayImage(currentIndex);
-  delayTimer();
+  delayTimer(showRightImage);
   return currentIndex;
 }
 leftIcon.addEventListener('click', showLeftImage);
@@ -78,7 +78,7 @@ indexIcons.forEach((icon, forEachIndex) => {
     imageWeMoveAwayFrom.style.display = 'none';
     currentIndex = forEachIndex + 1;
     displayImage(currentIndex);
-    delayTimer();
+    delayTimer(showRightImage);
     return currentIndex;
   });
 });
